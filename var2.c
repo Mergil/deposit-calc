@@ -39,6 +39,15 @@ int main()
             itog=(vklad)*1.08;
             printf("Итог=%d", itog);
             }
-
+			if (days>=241 && days<=365 && vklad<100000 )
+            {
+            itog=(vklad)*1.12;
+            printf("Итог=%d", itog);
+            }
+            if (days>=241 && days<=365 && vklad>100000 )
+            {
+            itog=(vklad)*1.15;
+            printf("Итог=%d", itog);
+			}
 	return 0;
 }
