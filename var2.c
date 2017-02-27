@@ -10,6 +10,11 @@ int main()
 		scanf("%d", &days);
 		printf("Введите сумму вклада мин.10к рублей\n");
 		scanf("%d", &vklad);
+			if (days>1 && vklad<10000)
+			{
+			printf("Сумма меньше 10 тысяч");
+			return 0;
+			}
 			if (days<=30 && vklad<100000 )
 			{
 			itog=(vklad)*0.9;
