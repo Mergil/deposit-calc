@@ -1,2 +1,2 @@
 #deposit-calc
-Variant 2
+ Variant 2
