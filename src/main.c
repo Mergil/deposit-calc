@@ -3,12 +3,23 @@
 
 int main()
 {
-	int days;
-	int vklad;
-		printf("Введите дни вклада, не более 365\n");
-		scanf("%d", &days);
-		printf("Введите сумму вклада  рублей\n");
-		scanf("%d", &vklad);
-	calc(vklad, days);
-	return 0;
-	}
+     int days, vklad;
+     printf("Введите дни вклада и сам вклад!\n:");
+     scanf("%d %d",&days, &vklad);
+     if (days<= 365 && vklad>=10000){
+     	vklad= calc_low_days(vklad, days);
+     	
+     	if (vklad<=100000){
+     		vklad = low_then_100000(vklad, days);
+     	}
+     	if (vklad>100000){
+     		vklad = calc_more_100000 (vklad, days);
+     	}
+     	
+     	printf("Ваш вклад равен= %d", vklad);
+    }
+    else {
+     printf("Ошибка!");
+     }
+return 0;
+}
