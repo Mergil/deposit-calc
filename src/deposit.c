@@ -1,58 +1,46 @@
 #include <stdio.h>
 #include "deposit.h"
- void calc (int vklad, int days){
- int money;
- int itog;
- 	if (days>1 && vklad<10000)
-            if (days<=30 && vklad<100000 )
-            {
-                itog=(vklad)*0.9;
-                money=itog-vklad;
-                printf("Убыток %d\n", money);
-                printf("Итог=%d", itog);
-            }
-            if (days<=30 && vklad>100000 )
-            {
-                itog=(vklad)*0.9;
-                money=itog-vklad;
-                printf("Убыток %d\n", money);
-                printf("Итог=%d", itog);
-            }
-            if (days>=31 && days<=120 && vklad<100000 )
-            {
-                itog=(vklad)*1.02;
-                money=itog-vklad;
-                printf("Доход %d\n", money);
-                printf("Итог=%d", itog);
-            }
-            if (days>=31 && days<=120 && vklad>100000 )
-            {
-                itog=(vklad)*1.03;
-                money=itog-vklad;
-                printf("Доход %d\n", money);
-                printf("Итог=%d", itog);
-            }
-            if (days>=121 && days<=240 && vklad<100000 )
 
-			if (days>=121 && days<=240 && vklad>100000 )
-            {
-                itog=(vklad)*1.08;
-                money=itog-vklad;
-                printf("Доход %d\n", money);
-                printf("Итог=%d", itog);
+int calc_low_days(int vklad, int days)
+{
+        if (days>=0 && days <=30) {
+            vklad=0.9*vklad;
+        
+       }
+       return vklad;
+}
+
+int low_then_100000(int vklad, int days)
+{       
+     
+            if(days>30 && days<=120) {
+                vklad=1.02*vklad;
             }
-            if (days>=241 && days<=365 && vklad<100000 )
-            {
-                itog=(vklad)*1.12;
-                money=itog-vklad;
-                printf("Доход %d\n", money);
-                printf("Итог=%d", itog);
+
+            if(days> 120 && days<=240){
+            vklad=1.06*vklad;
             }
-            if (days>=241 && days<=365 && vklad>100000 )
-            {
-                itog=(vklad)*1.15;
-                money=itog-vklad;
-                printf("Доход %d\n", money);
-                printf("Итог=%d", itog);
-			}
-			}
+
+            if(days>240 && days<=365){
+            vklad=1.12*vklad;
+            }
+            return vklad;
+}
+
+int calc_more_100000(int vklad, int days)
+{          
+
+     
+            if(days>30 && days<=120) {
+                vklad=1.03*vklad;
+            }
+
+            if(days> 120 && days<=240){
+            vklad=1.08*vklad;
+            }
+
+            if(days>240 && days<=365){
+            vklad=1.15*vklad;
+            }
+            return vklad;
+}

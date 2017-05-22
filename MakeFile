@@ -1,2 +1,0 @@
-deposit: var2.c
-	gcc -Wall -o  var2 var2.c
